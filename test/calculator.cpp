@@ -64,6 +64,10 @@ void fixExpression(StackNode<char>** operators, char currentOperator, string& ex
         push(operators, currentOperator);
 }
 
+// bool isNegative(string operation, int position) {
+//     //if()
+// }
+
 float operate(float a, float b, char op) {
     switch (op) {
         case '+': return a + b;
@@ -87,54 +91,68 @@ float operate(float a, float b, char op) {
 }
 
 int main() {
-    StackNode<char>* operatorStack = NULL;
-    string output = "";
-
-    string operation = "100.5*-90+3*2", value = "";
-    int length = operation.length(), start = 0;
-
-    for(int i = 0; i < length; i++) {
-        char currentSpot = operation[i];
-
-        if(isOperator(currentSpot)) {
-            if(!(currentSpot == '-' && isOperator(operation[i - 1]))) {
-                value = value + " " + operation.substr(start, i - start) + " " + currentSpot;
-                start = i + 1;
-            }          
-        }
-        else if(i + 1 >= length) 
-            value = value + operation.substr(start, i - start) + " " + currentSpot; 
+    string s = "123";
+    auto* p = s.c_str();
+    auto *b = p;
+    
+    for(; isdigit(*p); ++p) {
+        cout << *p << endl;
     }
 
-    cout << "value:" << value << "\n";
+    string c = string(b,p);
 
-    string str = "";
-    stringstream ss(value);
+    cout << "p: " << p << endl;
+    cout << "b: " << b << endl;
+    cout << "c: " << c << endl;   
 
-    while(ss >> str) {
-        char* isChar = NULL;
-        float f = strtof(str.c_str(), &isChar);
+    // StackNode<char>* operatorStack = NULL;
+    // string output = "";
 
-        if(*isChar) {
-            if(empty(operatorStack)) 
-                push(&operatorStack, *isChar);
-            else 
-                fixExpression(&operatorStack, *isChar, output);
-        }
-        else {
-            output = output + " " + str;
-        }
-    }
+    // string operation = "100.5*-90+3*2", value = "";
+    // int length = operation.length(), start = 0;
 
-    while(!empty(operatorStack)) {
-        char op = pop(&operatorStack);
-        output = output + " " + op;
-    }
+    // for(int i = 0; i < length; i++) {
+    //     char currentSpot = operation[i];
 
-    output.erase(0, 1);
-    output.erase(output.length(), 1);
+    //     if(isOperator(currentSpot)) {
+    //         if(!(currentSpot == '-' && isOperator(operation[i - 1]))) {
+    //             value = value + " " + operation.substr(start, i - start) + " " + currentSpot;
+    //             start = i + 1;
+    //         }          
+    //     }
+    //     else if(i + 1 >= length) 
+    //         value = value + operation.substr(start, i - start) + " " + currentSpot; 
+    // }
 
-    cout << "output: " << output << endl;
+    // cout << "value:" << value << "\n";
+
+    // string str = "";
+    // stringstream ss(value);
+
+    // while(ss >> str) {
+    //     char* isChar = NULL;
+    //     float f = strtof(str.c_str(), &isChar);
+
+    //     if(*isChar) {
+    //         if(empty(operatorStack)) 
+    //             push(&operatorStack, *isChar);
+    //         else 
+    //             fixExpression(&operatorStack, *isChar, output);
+    //     }
+    //     else {
+    //         output = output + " " + str;
+    //     }
+    // }
+
+    // while(!empty(operatorStack)) {
+    //     char op = pop(&operatorStack);
+    //     output = output + " " + op;
+    // }
+
+    // output.erase(0, 1);
+    // output.erase(output.length(), 1);
+
+    // cout << "output: " << output << endl;
 
     return 0;
 }
