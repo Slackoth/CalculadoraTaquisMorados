@@ -12,9 +12,10 @@ class Token {
         std::string value;
         int precedence;
         bool rightAssociative;
+        bool isUnary;
 
-        Token(Type t, std::string v, int p = -1, bool ra = false):
-            type(t), value(v), precedence(p), rightAssociative(ra) {}
+        Token(Type t, std::string v, int p = -1, bool ra = false, bool u = false):
+            type(t), value(v), precedence(p), rightAssociative(ra), isUnary(u) {}
 };
 
 std::ostream& operator<<(std::ostream& os, const Token& token) {
