@@ -14,7 +14,7 @@ struct Queue {
 
 template<class T>
 bool queueIsEmpty(Queue<T> queue) {
-    return queue->front == NULL;
+    return queue.front == NULL;
 }
 
 template<class T>
